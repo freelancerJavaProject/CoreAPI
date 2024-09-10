@@ -13,12 +13,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="BUYER_REGISTRATION")
-public class BuyerRegistration {
+@Table(name ="SELLER_REGISTRATION")
+public class SellerRegistration {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer buyerId;
+	private Integer sellerId;
 	private String name;
 	private String email;
 	private String phone;
@@ -47,7 +47,14 @@ public class BuyerRegistration {
 	private int totalPlotNo;
 	private LocalDate createdOn;
 	private String remark;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "buyerRegistration", cascade = CascadeType.ALL)
-	private Set<BuyerPortfolio> buyerPortfoliosList;
+	
+	@OneToMany(fetch = FetchType.LAZY , mappedBy = "sellerPortfolios" ,cascade = CascadeType.ALL)
+	private Set<SellerPortfolio> sellerPortfoliosList;
+	
+	
+	
+	
+	
+	
 
 }

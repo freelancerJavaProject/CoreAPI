@@ -2,20 +2,26 @@ package com.plot.CoreAPI.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name ="BUYER_PORTFOLIO")
 public class BuyerPortfolio {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer buyerPortfolioId;
-	private String searchCountry;
-	private String searchState;
-	private String searchArea;
+	private String country;
+	private String state;
+	private String areaDivision;
+	private String area;
 	private String searchLocation;
 	private int allowNoOfUsers;
 	private LocalDate createdOn;
@@ -34,6 +40,8 @@ public class BuyerPortfolio {
 	private LocalDate tokentAmtOn;
 	private String payAmt;
 	private String remarks;
-
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "buyer_Id")
+	private BuyerRegistration buyerRegistration;
 
 }
